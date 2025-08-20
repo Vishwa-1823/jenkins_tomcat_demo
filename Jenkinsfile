@@ -16,15 +16,6 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-        stage('Deploy on Tomcat'){
-            steps{
-                echo 'Deploying on Tomcat '
-                sshagent(['tomcat-key']) {
-                    sh 'scp -v -o StrictHostKeyChecking=no target/demowar-0.0.1-SNAPSHOT.war ubuntu@$TOMCAT_IP:/opt/tomcat/webapps'
-                }
-            }
-        }
-        
     }
         
 
