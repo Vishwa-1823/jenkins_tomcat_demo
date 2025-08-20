@@ -7,7 +7,7 @@ pipeline {
         
         stage('checkout'){
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vcjain/jenkins_tomcat_demo.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Vishwa-1823/jenkins_tomcat_demo.git']])
             }    
         }
         stage('Build'){
