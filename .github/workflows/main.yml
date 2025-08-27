@@ -53,11 +53,10 @@ jobs:
           
     # 6. Upload WAR to Jenkins
     - name: Trigger Jenkins Job
-      uses: appleboy/jenkins-action@master
+      uses: joshlk/jenkins-githubaction@master
       with:
           url: https://tigers-palestinian-layer-itunes.trycloudflare.com
-          user: ${{ secrets.JENKINS_USER }}
-          token: ${{ secrets.JENKINS_API_TOKEN }}
-          job: Project2
+          job_name: Project2
+          username: ${{ secrets.JENKINS_USER }}
+          api.token: ${{ secrets.JENKINS_API_TOKEN }}
           parameters: WAR_FILE=demowar-0.0.1-SNAPSHOT.war
-          insecure: true
