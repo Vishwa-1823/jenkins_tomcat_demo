@@ -47,6 +47,6 @@ jobs:
           echo "Looking for WAR file: ${WAR_FILE}"
           ls -lh "${WAR_FILE}"
           
-          curl -v -X POST "https://tigers-palestinian-layer-itunes.trycloudflare.com/job/Project2/build?token=auth123" \
+          curl -v -X POST "https://tigers-palestinian-layer-itunes.trycloudflare.com/job/Project2/buildWithParameters?token=auth123" \
             --user "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_API_TOKEN }}" \
             -F "WAR_FILE=@${WAR_FILE}"
