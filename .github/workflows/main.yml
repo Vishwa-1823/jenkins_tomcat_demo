@@ -36,7 +36,14 @@ jobs:
     # 5. Verify WAR output
     - name: List target files
       run: ls -l target
-
+   
+    - name: Check WAR file existence
+      run: |
+          if [ ! -f target/*.war ]; then
+          echo "ERROR: WAR file not found!"
+          exit 1
+          fi
+          
     # 6. Upload WAR to Jenkins
     - name: Send WAR to Jenkins for deployment
       run: |
