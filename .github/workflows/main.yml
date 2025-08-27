@@ -37,11 +37,12 @@ jobs:
     - name: List target files
       run: |
           ls -l target
-          WAR_FILE=$(ls target/*.war | head -n 1)
+          
       
     # 6. Upload WAR to Jenkins
     - name: Send WAR to Jenkins with Crumb
       run: |
+          WAR_FILE=$(ls target/*.war | head -n 1)
           curl -X POST "https://tigers-palestinian-layer-itunes.trycloudflare.com/job/Project2/buildWithParameters?token=auth123" \
             --user "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_API_TOKEN }}" \
             -F "WAR_FILE=@${WAR_FILE}"
