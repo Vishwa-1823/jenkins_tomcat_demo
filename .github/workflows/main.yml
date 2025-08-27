@@ -45,17 +45,11 @@ jobs:
           fi
           
     # 6. Upload WAR to Jenkins
-    - name: Get Jenkins Crumb
-      id: crumb
-      run: |
-          CRUMB=$(curl -u "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_API_TOKEN }}" \
-          "https://tigers-palestinian-layer-itunes.trycloudflare.com/crumbIssuer/api/json" | jq -r .crumb)
-          echo "CRUMB=$CRUMB" >> $GITHUB_OUTPUT
-          
-    - name: Send WAR to Jenkins with Crumb
-      run: |
-          WAR_FILE=$(ls target/*.war | head -n 1)
-          curl -u "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_API_TOKEN }}" \
-          -H "Jenkins-Crumb: ${{ steps.crumb.outputs.CRUMB }}" \
-          -F "WAR_FILE=@${WAR_FILE}" \
-          "https://tigers-palestinian-layer-itunes.trycloudflare.com/job/Project2/buildWithParameters?token=auth123"
+    - name: Trigger Jenkins Job
+      uses: appleboy/jenkins-action@master
+      with:
+          url: "https://tigers-palestinian-layer-itunes.trycloudflare.com"
+          user: "${{ secrets.JENKINS_USER }}"
+          token: "${{ secrets.JENKINS_API_TOKEN }}"
+          job: "Project2"
+          parameters: "WAR_FILE=target/*.war"
