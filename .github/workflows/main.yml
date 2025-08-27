@@ -43,6 +43,7 @@ jobs:
           echo "ERROR: WAR file not found!"
           exit 1
           fi
+          echo "WAR file path: ${{ steps.war_file.outputs.WAR_FULLPATH }}"
           
     # 6. Upload WAR to Jenkins
     - name: Get Jenkins Crumb
