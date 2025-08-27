@@ -38,7 +38,6 @@ jobs:
       run: |
           ls -l target
           WAR_FILE=$(ls target/*.war | head -n 1)
-          ls -l WAR_FILE
       
     # 6. Upload WAR to Jenkins
     - name: Send WAR to Jenkins with Crumb
