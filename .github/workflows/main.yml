@@ -59,4 +59,5 @@ jobs:
           user: ${{ secrets.JENKINS_USER }}
           token: ${{ secrets.JENKINS_API_TOKEN }}
           job: Project2
-          parameters: WAR_FILE=${{ steps.war_file.outputs.WAR_FILENAME }}&token=auth123
+          parameters: WAR_FILE=demowar-0.0.1-SNAPSHOT.war
+          jenkins_token: auth123 
