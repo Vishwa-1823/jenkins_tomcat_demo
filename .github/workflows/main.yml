@@ -58,5 +58,5 @@ jobs:
           url: https://tigers-palestinian-layer-itunes.trycloudflare.com
           job_name: Project2
           username: ${{ secrets.JENKINS_USER }}
-          api.token: ${{ secrets.JENKINS_API_TOKEN }}
+          api_token: ${{ secrets.JENKINS_API_TOKEN }}
           parameters: WAR_FILE=demowar-0.0.1-SNAPSHOT.war
